@@ -9,13 +9,16 @@ const yummm = {
     },
     setListener: (n) => {
         document.getElementsByClassName("meal-container")[0].addEventListener("change", function() {
-            if(this.value !== "") {
-                mealType = this.value.toLowerCase();
-                yummm.setOptions();
-            } else {
-                yummm.removeOptions();
-            }
+            yummm.isEmpty(this.value);
         }, false);
+    },
+    isEmpty: (e) => {
+        if(e !== "") {
+            mealType = e.toLowerCase();
+            yummm.setOptions();
+        } else {
+            yummm.removeOptions();
+        }
     },
     getArr: () => {
         if(mealType==="breakfast") {
@@ -26,7 +29,7 @@ const yummm = {
             return dinnerFood;
         }
     },
-    getFoodLength: () => {
+    getArrLength: () => {
         return yummm.getArr().length;
     },
     removeOptions: () => {
@@ -41,7 +44,7 @@ const yummm = {
         }
     },
     setOptions: () => {
-        let len = yummm.getFoodLength();
+        let len = yummm.getArrLength();
 
         yummm.removeOptions();
 
