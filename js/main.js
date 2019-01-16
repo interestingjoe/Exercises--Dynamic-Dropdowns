@@ -1,13 +1,17 @@
+let mealSelection = document.getElementsByClassName("meal");
+let mealItem = "";
 
-const test = {
+const dropdown = {
     main: () => {
-
+        dropdown.addListeners(dropdown.findListLength());
     },
-    testing: () => {
-
+    findListLength: () => {
+        return mealSelection.length;
     },
-    one: () => {
-
+    addListeners: (n) => {
+        document.getElementsByClassName("meal-container")[0].addEventListener("change", function() {
+            mealItem = this.value;
+        }, false);
     },
     two: () => {
 
@@ -16,3 +20,5 @@ const test = {
 
     }
 }
+
+dropdown.main();
