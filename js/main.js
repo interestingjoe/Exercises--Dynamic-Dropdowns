@@ -9,8 +9,12 @@ const yummm = {
     },
     setListener: (n) => {
         document.getElementsByClassName("meal-container")[0].addEventListener("change", function() {
-            mealType = this.value.toLowerCase();
-            yummm.setOptions();
+            if(this.value !== "") {
+                mealType = this.value.toLowerCase();
+                yummm.setOptions();
+            } else {
+                yummm.removeOptions();
+            }
         }, false);
     },
     getArr: () => {
@@ -20,8 +24,6 @@ const yummm = {
             return lunchFood;
         } else if(mealType==="dinner") {
             return dinnerFood;
-        } else {
-            console.log("ELSE");
         }
     },
     getFoodLength: () => {
@@ -32,8 +34,10 @@ const yummm = {
         let food = document.getElementsByClassName("food");
         let len = food.length;
 
-        for(let i=0; i<len; i++) {
-            parent.removeChild(food[0]);
+        if(len>0) {
+            for(let i=0; i<len; i++) {
+                parent.removeChild(food[0]);
+            }
         }
     },
     setOptions: () => {
