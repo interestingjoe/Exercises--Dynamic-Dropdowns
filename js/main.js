@@ -22,6 +22,13 @@ const dropdown = {
         }
     },
     three: () => {
+        let option = document.createElement("option");
+        option.setAttribute("value", "eggs");
+        option.setAttribute("class", "food");
+        let copy = document.createTextNode("Eggs");
+        option.appendChild(copy);
+        document.getElementsByClassName("food-container")[0].appendChild(option);
+
 
     }
 }
