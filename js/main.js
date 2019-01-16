@@ -7,11 +7,19 @@ const dropdown = {
     addListener: (n) => {
         document.getElementsByClassName("meal-container")[0].addEventListener("change", function() {
             mealItem = this.value;
-            console.log("----mealItem: ", mealItem);
+            dropdown.populateSecondDropDown();
         }, false);
     },
-    two: () => {
-
+    populateSecondDropDown: () => {
+        if(mealItem==="breakfast") {
+            console.log("breakfast");
+        } else if(mealItem==="lunch") {
+            console.log("lunch");
+        } else if(mealItem==="dinner") {
+            console.log("dinner");
+        } else {
+            console.log("ELSE");
+        }
     },
     three: () => {
 
