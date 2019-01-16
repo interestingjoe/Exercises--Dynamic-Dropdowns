@@ -27,8 +27,19 @@ const yummm = {
     getFoodLength: () => {
         return yummm.getArr().length;
     },
+    removeOptions: () => {
+        let parent = document.getElementsByClassName("food-container")[0];
+        let food = document.getElementsByClassName("food");
+        let len = food.length;
+
+        for(let i=0; i<len; i++) {
+            parent.removeChild(food[0]);
+        }
+    },
     setOptions: () => {
         let len = yummm.getFoodLength();
+
+        yummm.removeOptions();
 
         for(let i=0; i <len; i++) {
             let option = document.createElement("option");
