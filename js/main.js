@@ -1,4 +1,8 @@
 let mealItem = "";
+let mealCourse = "";
+let breakfastFood = ["Eggs", "Bacon", "Toast"];
+let lunchFood = ["Hamburger", "Pizza", "Milkshake", "Fries"];
+let dinnerFood = ["Steak", "Mash Potato", "Carrots", "Soda", "Corn"];
 
 const dropdown = {
     main: () => {
@@ -7,29 +11,26 @@ const dropdown = {
     addListener: (n) => {
         document.getElementsByClassName("meal-container")[0].addEventListener("change", function() {
             mealItem = this.value;
-            dropdown.populateSecondDropDown();
+            dropdown.setOptions();
         }, false);
     },
-    populateSecondDropDown: () => {
-        if(mealItem==="breakfast") {
-            console.log("breakfast");
-        } else if(mealItem==="lunch") {
-            console.log("lunch");
-        } else if(mealItem==="dinner") {
-            console.log("dinner");
-        } else {
-            console.log("ELSE");
-        }
+    getFoodLength: () => {
+        let arr = mealItem + "Food";
+        console.log("---", arr);
+        return arr.length;
     },
-    three: () => {
-        let option = document.createElement("option");
-        option.setAttribute("value", "eggs");
-        option.setAttribute("class", "food");
-        let copy = document.createTextNode("Eggs");
-        option.appendChild(copy);
-        document.getElementsByClassName("food-container")[0].appendChild(option);
+    setOptions: () => {
+        let len = dropdown.getFoodLength();
+        let mealCourse = mealItem + "Food";
 
-
+        for(let i=0; i <len; i++) {
+            let option = document.createElement("option");
+            option.setAttribute("value", mealCourse[i].toLowerCase());
+            option.setAttribute("class", "food");
+            let copy = document.createTextNode(mealCourse[i]);
+            option.appendChild(copy);
+            document.getElementsByClassName("food-container")[0].appendChild(option);
+        }
     }
 }
 
