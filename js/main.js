@@ -1,15 +1,21 @@
 let mealType = "";
 let breakfastFood = ["Eggs", "Bacon", "Toast"];
 let lunchFood = ["Hamburger", "Pizza", "Milkshake", "Fries"];
-let dinnerFood = ["Steak", "Mash Potato", "Carrots", "Soda", "Corn"];
+let dinnerFood = ["Steak", "Fettuccine Alfredo", "Baked Fish", "Chicken Salad", "Soylent Green"];
+let isListener = false;
 
 const yummm = {
     main: () => {
-        yummm.setListener();
+        yummm.setListener1();
     },
-    setListener: (n) => {
+    setListener1: () => {
         document.getElementsByClassName("meal-container")[0].addEventListener("change", function() {
             yummm.isEmpty(this.value);
+        }, false);
+    },
+    setListener2: () => {
+        document.getElementsByClassName("food-container")[0].addEventListener("change", function() {
+            console.log(this.value);
         }, false);
     },
     isEmpty: (e) => {
@@ -18,6 +24,12 @@ const yummm = {
             yummm.setOptions();
         } else {
             yummm.removeOptions();
+        }
+    },
+    isListener: () => {
+        if(isListener===false) {
+            yummm.setListener2();
+            isListener = true;
         }
     },
     getArr: () => {
@@ -56,6 +68,8 @@ const yummm = {
             option.appendChild(copy);
             document.getElementsByClassName("food-container")[0].appendChild(option);
         }
+
+        yummm.isListener();
     }
 }
 
