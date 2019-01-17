@@ -4,13 +4,13 @@ let lunchFood = ["Hamburger", "Pizza", "Milkshake", "Fries"];
 let dinnerFood = ["Steak", "Fettuccine Alfredo", "Baked Fish", "Chicken Salad", "Soylent Green"];
 let isListener = false;
 
-const yummm = {
+const foodMenu = {
     main: () => {
-        yummm.setListener1();
+        foodMenu.setListener1();
     },
     setListener1: () => {
         document.getElementsByClassName("meal-container")[0].addEventListener("change", function() {
-            yummm.isEmpty(this.value);
+            foodMenu.isEmpty(this.value);
         }, false);
     },
     setListener2: () => {
@@ -21,14 +21,14 @@ const yummm = {
     isEmpty: (e) => {
         if(e !== "") {
             mealType = e.toLowerCase();
-            yummm.setOptions();
+            foodMenu.setOptions();
         } else {
-            yummm.removeOptions();
+            foodMenu.removeOptions();
         }
     },
     isListener: () => {
         if(isListener===false) {
-            yummm.setListener2();
+            foodMenu.setListener2();
             isListener = true;
         }
     },
@@ -42,7 +42,7 @@ const yummm = {
         }
     },
     getArrLength: () => {
-        return yummm.getArr().length;
+        return foodMenu.getArr().length;
     },
     removeOptions: () => {
         let parent = document.getElementsByClassName("food-container")[0];
@@ -56,21 +56,21 @@ const yummm = {
         }
     },
     setOptions: () => {
-        let len = yummm.getArrLength();
+        let len = foodMenu.getArrLength();
 
-        yummm.removeOptions();
+        foodMenu.removeOptions();
 
         for(let i=0; i <len; i++) {
             let option = document.createElement("option");
-            option.setAttribute("value", yummm.getArr()[i].toLowerCase());
+            option.setAttribute("value", foodMenu.getArr()[i].toLowerCase());
             option.setAttribute("class", "food");
-            let copy = document.createTextNode(yummm.getArr()[i]);
+            let copy = document.createTextNode(foodMenu.getArr()[i]);
             option.appendChild(copy);
             document.getElementsByClassName("food-container")[0].appendChild(option);
         }
 
-        yummm.isListener();
+        foodMenu.isListener();
     }
 }
 
-yummm.main();
+foodMenu.main();
