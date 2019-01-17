@@ -1,4 +1,6 @@
 let mealType = "";
+const mealContainer = document.getElementsByClassName("meal-container");
+const foodContainer = document.getElementsByClassName("food-container");
 let breakfastFood = ["Eggs", "Bacon", "Toast"];
 let lunchFood = ["Hamburger", "Pizza", "Milkshake", "Fries"];
 let dinnerFood = ["Steak", "Fettuccine Alfredo", "Baked Fish", "Chicken Salad", "Soylent Green"];
@@ -9,12 +11,12 @@ const foodMenu = {
         foodMenu.setListener1();
     },
     setListener1: () => {
-        document.getElementsByClassName("meal-container")[0].addEventListener("change", function() {
+        mealContainer[0].addEventListener("change", function() {
             foodMenu.isEmpty(this.value);
         }, false);
     },
     setListener2: () => {
-        document.getElementsByClassName("food-container")[0].addEventListener("change", function() {
+        foodContainer[0].addEventListener("change", function() {
             console.log(this.value);
         }, false);
     },
@@ -45,7 +47,7 @@ const foodMenu = {
         return foodMenu.getArr().length;
     },
     removeOptions: () => {
-        let parent = document.getElementsByClassName("food-container")[0];
+        let parent = foodContainer[0];
         let food = document.getElementsByClassName("food");
         let len = food.length;
 
@@ -66,7 +68,7 @@ const foodMenu = {
             option.setAttribute("class", "food");
             let copy = document.createTextNode(foodMenu.getArr()[i]);
             option.appendChild(copy);
-            document.getElementsByClassName("food-container")[0].appendChild(option);
+            foodContainer[0].appendChild(option);
         }
 
         foodMenu.isListener();
