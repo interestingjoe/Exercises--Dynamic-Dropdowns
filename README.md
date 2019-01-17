@@ -1,4 +1,6 @@
 # Exercises--Dynamic-Dropdowns
+
+WHAT IS THIS: 
 This is a JavaScript exercise.
 
 GOAL:
